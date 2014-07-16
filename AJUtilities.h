@@ -15,6 +15,9 @@
 #define RGBA(r, g, b, a)                                                       \
   [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:a]
 
+
+#pragma mark - ###--- NSFoundation ---###
+
 @interface NSObject (AJUtils)
 
 + (instancetype)instance;
@@ -116,6 +119,8 @@ dispatch_queue_t backgroundQueue();
 /*** USAGE: $_castIf. . . . .(Autocomplete should do the rest) ****/
 id _castIf(Class, id);
 id _castIfNotNSNull(id);
+
+#pragma mark - ###--- Utilities ---###
 
 @interface AJUtilities : NSObject
 
