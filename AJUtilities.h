@@ -118,7 +118,6 @@ id _castIf(Class, id);
 id _castIfNotNSNull(id);
 
 @interface AJUtilities : NSObject
-+ (UIImage *)imageFromText:(NSString *)text;
 
 + (NSString *)nameFromEmail:(NSString *)email;
 

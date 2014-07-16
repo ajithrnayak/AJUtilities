@@ -349,62 +349,6 @@ dispatch_queue_t backgroundQueue() {
 
 @implementation AJUtilities
 
-+ (UIImage *)imageFromText:(NSString *)text {
-  // set the font type and size
-  UIFont *font = [UIFont systemFontOfSize:25];
-
-  // CGSize size = [text sizeWithFont:font];
-
-  // set a background image here..
-  UIImage *thumbImage = [UIImage imageNamed:@"SL_slider.png"];
-
-  CGSize bgSize = [thumbImage size];
-
-  // check if UIGraphicsBeginImageContextWithOptions is available (iOS is 4.0+)
-  if (UIGraphicsBeginImageContextWithOptions != NULL)
-    UIGraphicsBeginImageContextWithOptions(bgSize, NO, 0.0);
-  else
-    // iOS is < 4.0
-    UIGraphicsBeginImageContext(bgSize);
-
-  // optional: add a shadow, to avoid clipping the shadow you should make the
-  // context size bigger
-  //
-  // CGContextRef ctx = UIGraphicsGetCurrentContext();
-  // CGContextSetShadowWithColor(ctx, CGSizeMake(1.0, 1.0), 5.0, [[UIColor
-  // brownColor] CGColor]);
-
-  [thumbImage drawInRect:CGRectMake(0, 0, bgSize.width, bgSize.height)];
-
-  // draw in context, you can use also drawInRect:withFont:
-  [text drawAtPoint:CGPointMake(4.0, 25.0) withFont:font];
-
-  // CGImageRef cimg = UIGraphicsGetCurrentContext();
-
-  // transfer image
-  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-  CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-  [image drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0];
-
-  // CGContextRef context = UIGraphicsGetCurrentContext();
-  //    CGContextSetRGBStrokeColor(ctx, 2.0, 3.5, 5.0, 1.0);
-  //    CGContextStrokeRect(ctx, rect);
-  UIImage *testImg = UIGraphicsGetImageFromCurrentImageContext();
-
-  UIGraphicsEndImageContext();
-
-  UIImage *imageToDisplay = [UIImage imageWithCGImage:[testImg CGImage]
-                                                scale:1.0
-                                          orientation:UIImageOrientationLeft];
-
-  UIImageView *holderView = [[UIImageView alloc] initWithFrame:rect];
-  [holderView setImage:imageToDisplay];
-
-  //[thumbImage addSubview:holderView];
-
-  return holderView.image;
-}
-
 + (NSString *)nameFromEmail:(NSString *)email {
 
   if (email) {
